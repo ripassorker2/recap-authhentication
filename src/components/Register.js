@@ -10,7 +10,10 @@ const auth = getAuth(app);
 
 const Register = () => {
   const navigate = useNavigate();
-  const { createUser } = useContext(UserConText);
+  const { createUser, googleSignIn } = useContext(UserConText);
+
+  // const location = useLocation();
+  // let from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -36,6 +39,20 @@ const Register = () => {
             );
           });
         });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        // navigate(from, { replace: true });
+        navigate("/home");
+        toast.success("Login succesfully. Congratualation");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -117,7 +134,11 @@ const Register = () => {
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
         <div className="flex justify-center space-x-4">
-          <button aria-label="Log in with Google" className="p-3 rounded-sm">
+          <button
+            onClick={handleGoogleSignIn}
+            aria-label="Log in with Google"
+            className="p-3 rounded-sm"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 32 32"

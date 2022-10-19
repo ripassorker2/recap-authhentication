@@ -27,19 +27,16 @@ const Navbar = () => {
           <Link to={"/home"} className="mr-5 hover:text-gray-900">
             Home
           </Link>
-
-          {user?.uid && (
-            <>
-              {" "}
-              <Link to={"/profile"} className="mr-5 hover:text-gray-900">
-                Profile
-              </Link>
-              <Link to={"/wallet"} className="mr-5 hover:text-gray-900">
-                Wallet
-              </Link>
-            </>
-          )}
-
+          {/* {user?.uid && (
+            <> */}{" "}
+          <Link to={"/profile"} className="mr-5 hover:text-gray-900">
+            Profile
+          </Link>
+          <Link to={"/wallet"} className="mr-5 hover:text-gray-900">
+            Wallet
+          </Link>
+          {/* </>
+          )} */}
           {user?.uid ? (
             <button
               onClick={logOut}
@@ -63,7 +60,6 @@ const Navbar = () => {
               Login
             </Link>
           )}
-
           {/* <Link to={"/resister"} className="mr-5 hover:text-gray-900">
             Resister
           </Link> */}
