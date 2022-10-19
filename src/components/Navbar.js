@@ -28,12 +28,17 @@ const Navbar = () => {
             Home
           </Link>
 
-          <Link to={"/profile"} className="mr-5 hover:text-gray-900">
-            Profile
-          </Link>
-          <Link to={"/wallet"} className="mr-5 hover:text-gray-900">
-            Wallet
-          </Link>
+          {user?.uid && (
+            <>
+              {" "}
+              <Link to={"/profile"} className="mr-5 hover:text-gray-900">
+                Profile
+              </Link>
+              <Link to={"/wallet"} className="mr-5 hover:text-gray-900">
+                Wallet
+              </Link>
+            </>
+          )}
 
           {user?.uid ? (
             <button
